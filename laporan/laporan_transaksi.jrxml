@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="30597fa7-6186-4667-95e7-c71b07aeda76">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dari" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ke" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Workspace\\Netbeans\\Meteorserverpulsa\\laporan\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="header" class="java.lang.String"/>
+	<parameter name="detail" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT id,nama,alamat,nohp,tipe_member FROM data_member WHERE status='enable' ORDER BY nama]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="alamat" class="java.lang.String"/>
+	<field name="nohp" class="java.lang.String"/>
+	<field name="tipe_member" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="9" y="5" width="139" height="26" uuid="db6eb96b-1f7f-4fac-a89d-346f2a753d2c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{header}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="31" width="132" height="20" uuid="058cdbb3-7ed7-4751-bae8-988ca746e511"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{detail}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="482" y="7" width="73" height="20" uuid="f1a22b27-51e4-434e-819b-023093c1d577"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{dari}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="401" y="7" width="67" height="20" uuid="6eea6945-cb8f-4821-91c2-66427ed5859f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{ke}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="468" y="7" width="14" height="20" uuid="628ce2a4-7e74-4efe-8e2d-7f9cb55ffd4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="125" uuid="81cad9ae-73fe-4b94-8728-cf1a22c1f902"/>
+				<subreportParameter name="nohp">
+					<subreportParameterExpression><![CDATA[$F{nohp}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dari">
+					<subreportParameterExpression><![CDATA[$P{dari}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ke">
+					<subreportParameterExpression><![CDATA[$P{ke}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nama">
+					<subreportParameterExpression><![CDATA[$F{nama}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="alamat">
+					<subreportParameterExpression><![CDATA[$F{alamat}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="id">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="tipe">
+					<subreportParameterExpression><![CDATA[$F{tipe_member}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "laporan_transaksi_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

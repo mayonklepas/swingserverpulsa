@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="908d5fe4-eab0-419c-8c94-58a6fbde5bde">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="header" class="java.lang.String"/>
+	<parameter name="detail" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT id,nama,harga,jumlah FROM data_tarif]]>
+	</queryString>
+	<field name="id" class="java.lang.String"/>
+	<field name="nama" class="java.lang.String"/>
+	<field name="harga" class="java.lang.Double"/>
+	<field name="jumlah" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement style="Title" x="0" y="13" width="318" height="33" uuid="d7aac7fe-a9cf-4b88-a295-452e2e1ecf5d"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$P{header}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="SubTitle" x="100" y="46" width="352" height="22" uuid="cbadc082-ef0f-4a16-af2b-a60dfe36f23a"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$P{detail}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="452" y="0" width="100" height="20" uuid="e379d872-39c8-4992-8be9-d42445259904"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="18" width="555" height="1" uuid="b1962ce0-0706-4093-8750-f09e38404ce7"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="3" width="100" height="15" uuid="0e5345e0-32d0-4770-b74c-b69e00303a53"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Kode Layanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="100" y="3" width="248" height="15" uuid="dce47c5d-7366-46df-9ade-1c793acb893c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Nama Layanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="348" y="3" width="104" height="15" uuid="8d5f6dff-6bda-46d4-af12-368834e0ef65"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="452" y="3" width="103" height="15" uuid="03efbe9f-0f56-4c0c-838d-a806f2bfa220"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" uuid="00296ee8-94e8-49aa-ba13-75523259d210"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement style="Detail" x="0" y="1" width="100" height="15" uuid="a508a96a-0bbc-4076-815b-d9cb296c5ab3"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="100" y="1" width="248" height="15" uuid="956a4d3f-f36d-4e70-b683-5ef030395c83"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField pattern="Rp #,##0.00">
+				<reportElement style="Detail" x="348" y="0" width="104" height="15" uuid="7ee8f43a-6b87-44be-a49d-b0828052483e"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{harga}]]></textFieldExpression>
+			</textField>
+			<textField pattern="Rp #,##0">
+				<reportElement style="Detail" x="452" y="0" width="103" height="15" uuid="9c790d70-2c72-4b57-b9f9-4f82f0b99740"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1" uuid="68655b04-1791-4b5b-9a36-27204eb7835e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="714d4834-f1a1-42e1-82a9-25620237cc94"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="bd8c3dd6-5f43-42b2-af03-b7a3a3ed99d6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="84383fe1-3215-41f7-b7c9-5363154df05f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="172">
+			<staticText>
+				<reportElement x="15" y="48" width="509" height="13" uuid="670143e7-bafc-457d-9abb-71fb16ebabb2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dari Nomor Sendiri : ketik kode kirim ke 087765462254 (contoh : x5 )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="11" width="133" height="18" uuid="04df28ba-f9f2-42cc-b265-43f9e33bf7b9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cara Pengisian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="100" height="16" uuid="e6cb5f85-456d-493b-a225-55329592e6f3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Melalui SMS :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="91" width="100" height="13" uuid="5ce6f602-ee9f-4b8f-916b-4862b7d8dd2f"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Melalui Telegram :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="104" width="509" height="13" uuid="a1cc9e57-990f-4d94-9034-9dd722864410"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dari ID sendiri ke nomor sendiri : ketik kode kirim ke @meteorpulsa_bot (contoh : x5 )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="61" width="509" height="14" uuid="cef1dbc8-91e2-4434-b0f4-5848f491c71f"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dari Nomor Lain : ketik kode.nomor kirim ke 087765462254 (contoh : x5.083129345215 )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="149" width="369" height="20" uuid="89ced1db-366d-4e22-89b5-bfee951608d5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Untuk Pendaftaran / Info lebih lanjut : silahkan hubungi 083129345215]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="170" width="555" height="1" uuid="8c880b0e-0755-438d-94ac-c97e7a014cc9"/>
+			</line>
+			<staticText>
+				<reportElement x="15" y="75" width="509" height="14" uuid="67204174-6305-4c16-9632-80dda9028f11"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Ke Nomor Lain : ketik lain.kode.nomor tujuan kirim ke 087765462254 (contoh : lain.x5.083129345215 )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="117" width="509" height="13" uuid="4962a44f-5044-4c1d-87b6-527ef857dc3a"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dari ID lain ke nomor sendiri : ketik kode.nomor kirim ke @meteorpulsa_bot (contoh : xl5.083129345215)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="130" width="509" height="14" uuid="2d8e847d-eb87-4e6f-b8a6-a50e24cd0dfb"/>
+				<textElement verticalAlignment="Top">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Dari ID sendiri ke nomor lain : ketik lain.kode.nomor tujuan kirim ke @meteorpulsa_bot (contoh : lain.xl5.083129345215 )]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
